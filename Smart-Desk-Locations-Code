@@ -1,0 +1,117 @@
+@{
+    ViewBag.Title = "Locations";
+}
+
+@*<h2>Locations</h2>*@
+<script>
+    $(document).ready(function () {
+        $('#btn_submit').click(function () {
+            if (validate()) {
+                alert('Your Shop Location Form Submitted Successfully.....');
+            }
+        });
+    });
+
+    var validate = function () {
+        $('#txt_shown').html('');
+
+        $('#txt_locations_name').val($.trim($('#txt_locations_name').val()));
+        $('#txt_locations_code').val($.trim($('#txt_locations_code').val()));
+        $('#txt_locations_mobile_No').val($.trim($('#txt_locations_mobile_No').val()));
+        $('#txt_locations_address').val($.trim($('#txt_locations_address').val()));
+
+        if ($('#txt_locations_name').val() === '') {
+            $('#txt_shown').html('Enter Location Name Here...');
+            $('#txt_locations_name').focus();
+            return false;
+        }
+
+        else if ($('#txt_locations_code').val() === '') {
+            $('#txt_shown').html('Enter Location Code Here..');
+            $('#txt_locations_code').focus();
+            return false;
+        }
+
+        else if ($('#txt_locations_mobile_No').val() === '') {
+            $('#txt_shown').html('Enter Mobile Number Here...');
+            $('#txt_locations_mobile_No').focus();
+            return false;
+        }
+
+        else if ($('#txt_locations_mobile_No').val().length < 10) {
+            $('#txt_shown').html('Please Enter 10 Number Only..');
+            $('#txt_locations_mobile_No').focus();
+            return false;
+        }
+
+        else if ($('#txt_locations_address').val() === '') {
+            $('#txt_shown').html('Enter Address Here....');
+            $('#txt_locations_address').focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="widget-header">
+                    <h4><i class="icon-reorder"></i>SmartShop</h4>
+                </div>
+                <div class="widget-content">
+                    <form id="frm-value" name="frm-value" class="form-horizontal" action="#">
+                        <h4 id="txt_shown" class="text-danger" style="margin-left: 9rem;"></h4>
+                        <div class="form-group" style="margin-top: 3rem;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-5 control-label" for="locations_name">Location Name:</label>
+                                    <div class="col-md-7">
+                                        <input class="form-control" type="text" id="txt_locations_name" style="text-transform: capitalize;" name="locations_name" placeholder="Name" maxlength="20" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-5 control-label" for="locations_code">Location Code:</label>
+                                    <div class="col-md-7">
+                                        <input class="form-control" type="text" id="txt_locations_code" style="text-transform: capitalize;" name="locations_code" placeholder="Code" maxlength="50" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 3rem;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-md-5 control-label" for="locations_type">Type:</label>
+                                    <div class="col-md-7">
+                                        <select id="sel_customer" name="customer" class="form-control">
+                                            <option value="">Select Type</option>
+                                            <option value="1">Shop</option>
+                                            <option value="4">Franchise</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-5 control-label" for="locations_contact-no">Contact No:</label>
+                                    <div class="col-md-7">
+                                        <input class="form-control" type="tel" id="txt_locations_mobile_No" style="text-transform: capitalize;" name="locations_contact-no" placeholder="Contact No" maxlength="10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: 2rem; margin-top: 3rem;">
+                            <div class="col-md-12">
+                                <label class="col-md-2 control-label" for="locations_name">Address:</label>
+                                <div class="col-md-10">
+                                    <textarea id="txt_locations_address" name="location_address" rows="3" cols="1000" class="form-control" maxlength="1000" placeholder="Address" style="resize: none;"></textarea>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="form-actions" style="margin-top: 3rem;">
+                            <button type="button" id="btn_submit" class="btn btn-primary pull-right">Save <i class="icon-save"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
